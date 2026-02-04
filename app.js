@@ -64,6 +64,14 @@ function addSection(title = "") {
     const cmd = button.dataset.cmd;
     if (!cmd) return;
     editor.focus();
+    if (cmd === "insertImage") {
+      const url = window.prompt("Image URL (CDN link):");
+      if (!url) return;
+      const alt = window.prompt("Alt text (optional):") || "";
+      const markdown = `![${alt}](${url})`;
+      document.execCommand("insertText", false, markdown);
+      return;
+    }
     document.execCommand(cmd, false, null);
   });
 
