@@ -1,0 +1,35 @@
+{
+  "name": "uxr-reports",
+  "version": "1.0.0",
+  "description": "Local-first UX research tool",
+  "productName": "UXR Tool",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build:mac": "electron-builder --mac --dir",
+    "dist:mac": "electron-builder --mac"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.dankling.uxrtool",
+    "productName": "UXR Tool",
+    "files": [
+      "**/*",
+      "!dist/**",
+      "!node_modules/**/test/**"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        "dmg"
+      ]
+    }
+  }
+}

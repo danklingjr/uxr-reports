@@ -15,8 +15,12 @@
         <p>Structured notes → categorized Markdown</p>
       </div>
     </div>
+    <div class="search">
+      <button id="toggleLibraryBtn" class="ghost">Library</button>
+      <input id="searchInput" type="text" placeholder="Search recent reports..." />
+      <div id="searchDropdown" class="search-dropdown"></div>
+    </div>
     <div class="actions">
-      <button id="setBaseBtn" class="ghost">Set Base Folder</button>
       <button id="saveBtn" class="primary">Save Markdown</button>
     </div>
   </header>
@@ -59,6 +63,16 @@
     </section>
   </main>
 
+  <div id="libraryModal" class="modal" aria-hidden="true">
+    <div class="modal-content library-modal">
+      <div class="panel-header">
+        <h2>Library</h2>
+        <button id="closeLibraryBtn" class="ghost">Close</button>
+      </div>
+      <div id="libraryList" class="library-list"></div>
+    </div>
+  </div>
+
   <template id="sectionTemplate">
     <div class="section">
       <div class="section-header">
@@ -72,14 +86,47 @@
         <button data-cmd="insertUnorderedList" title="Bulleted list">• List</button>
         <button data-cmd="insertOrderedList" title="Numbered list">1. List</button>
         <button data-cmd="insertImage" title="Insert image markdown">Image</button>
+        <button data-cmd="insertLink" title="Insert link markdown">Link</button>
       </div>
       <div class="editor" contenteditable="true" spellcheck="true"></div>
     </div>
   </template>
 
-  <footer class="footer">
-    <p>Works best in Chromium-based browsers (Chrome, Edge) for folder saving.</p>
-  </footer>
+  <div id="imageModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Insert Image</h3>
+      <label class="field">
+        <span>Image URL</span>
+        <input id="imageUrlInput" type="text" placeholder="https://cdn.example.com/image.png" />
+      </label>
+      <label class="field">
+        <span>Alt Text</span>
+        <input id="imageAltInput" type="text" placeholder="Optional description" />
+      </label>
+      <div class="modal-actions">
+        <button id="cancelImageBtn" class="ghost">Cancel</button>
+        <button id="insertImageBtn" class="primary">Insert</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="linkModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Insert Link</h3>
+      <label class="field">
+        <span>Link Text</span>
+        <input id="linkTextInput" type="text" placeholder="e.g., Full report" />
+      </label>
+      <label class="field">
+        <span>URL</span>
+        <input id="linkUrlInput" type="text" placeholder="https://example.com" />
+      </label>
+      <div class="modal-actions">
+        <button id="cancelLinkBtn" class="ghost">Cancel</button>
+        <button id="insertLinkBtn" class="primary">Insert</button>
+      </div>
+    </div>
+  </div>
 
   <script src="app.js"></script>
 </body>

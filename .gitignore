@@ -10,3 +10,7 @@
 
 # Misc
 *.swp
+
+# Node
+node_modules/
+dist/
